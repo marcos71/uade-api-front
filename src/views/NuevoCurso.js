@@ -1,0 +1,105 @@
+import * as React from 'react';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import { Button, createTheme, CssBaseline, InputAdornment, ThemeProvider } from '@mui/material';
+import { Box, Container } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
+
+const theme = createTheme();
+
+/*nombre materia duracion costo frecuencia desc?*/
+
+export default function NuevoCurso() {
+  const navigate = useNavigate();
+
+
+  const handleSave = () => {
+    navigate('/profesor');
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container component="main" sx={{ mb: 4 }}>
+        <Typography variant="h6" gutterBottom>
+          Nuevo Curso
+        </Typography>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              label="Nombre del Curso"
+              fullWidth
+              autoComplete="given-name"
+              variant="standard"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              label="Materia"
+              fullWidth
+              autoComplete="family-name"
+              variant="standard"
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <TextField
+              required
+              label="Duracion"
+              fullWidth
+              type="number"
+              autoComplete="shipping address-line1"
+              variant="standard"
+              InputProps={{
+                startAdornment: <InputAdornment position="start">Hs</InputAdornment>,
+              }}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <TextField
+              label="Costo"
+              type="number"
+              fullWidth
+              autoComplete="shipping address-line2"
+              variant="standard"
+              InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              required
+              label="Frecuencia"
+              fullWidth
+              autoComplete="shipping address-level2"
+              variant="standard"
+              type="number"
+            />
+          </Grid>
+          <Grid item xs={12} >
+            <TextField
+              label="Descripcion"
+              fullWidth
+              variant="standard"
+              multiline
+              maxRows={4}
+            />
+          </Grid>
+          
+          <Grid item>
+            <Button variant='contained' onClick={handleSave}>
+              Guardar
+            </Button>
+          </Grid>
+        </Grid>
+      </Container>
+
+    </ThemeProvider>
+
+  );
+}

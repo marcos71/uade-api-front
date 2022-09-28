@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "nombre": "Java 8",
+        "profesor": "marcos",
+        "costo": "200",
+        "frecuencia": "2",
+        "duracion": "4",
+        "desc": "sarasaseando",
+        "materia": "programacion 1"
+    },
+    {
+        "id": "2",
+        "nombre": "ReactJs",
+        "profesor": "tu vieja",
+        "costo": "350",
+        "frecuencia": "3",
+        "duracion": "4",
+        "desc": "chamuyando como un campeon",
+        "materia": "programacion 1"
+    }
+]

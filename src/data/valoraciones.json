@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "usuario": "marcos",
+        "comentario": "esto es un comentario que deberia tener varias lineas para ver como se ve en la lista de comentarios y mas adelante probar si funciona una especie de boton q sea tipo ver mas",
+        "publicado":false,
+        "rechazado":false
+    },
+    {
+        "id": "2",
+        "usuario": "pepe",
+        "comentario": "que buena clase",
+        "publicado":true,
+        "rechazado":false
+    },
+    {
+        "id": "3",
+        "usuario": "mariana",
+        "comentario": "sos un boludo",
+        "publicado":false,
+        "rechazado":false
+    }
+]
