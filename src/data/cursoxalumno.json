@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "alumno": "admin_alumno",
+        "curso": "1",
+        "estado":"Aceptado"
+    },
+    {
+        "id": "2",
+        "alumno": "admin_alumno",
+        "curso": "2",
+        "estado":"Aceptado"
+    },
+    {
+        "id": "3",
+        "alumno": "admin_alumno",
+        "curso": "3",
+        "esado":"Pendiente"
+    }
+]

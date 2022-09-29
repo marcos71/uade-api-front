@@ -1,21 +1,26 @@
-import { Box, Button, Container, createTheme, CssBaseline, Grid, ThemeProvider, Typography } from "@mui/material";
+import { Box, Container, createTheme, CssBaseline, Grid, ThemeProvider, Typography } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import CardAlumnoCurso from "../components/CardCursoAlumno";
+import CardCursoProfesor from "../components/CardCursoProfesor";
+import CardSolicitudProfesor from "../components/CardSolicitudProfesor";
 import dataCursos from "../data/cursos.json"
-import dataCursoxAumno from '../data/cursoxalumno.json';
 
 const theme = createTheme();
 
-export default function CursosAlumno() {
+export default function SolicitudesProfesor() {
     const logedUser = localStorage.getItem('logedUser');
     const parsedUser = JSON.parse(logedUser);
 
-    //get only courses for logedUser
-    const cursosContratados = dataCursos.filter(obj => obj.alumno === parsedUser.username && 
-        (obj.estado === 'Aceptado' || obj.estado === 'Finalizado'));
+    //get only courses for logedUser and not deleted
+    const cursosPendientes = dataCursos.filter(obj => obj.profesor === parsedUser.username &&
+        obj.estado === 'Solicitada');
 
-    const [cursos, setCursos] = useState(cursosContratados);
+    const [cursos, setCursos] = useState(cursosPendientes);
+
+    const handleRefreshCursos = (idCurso) => {
+        const newArray = cursos.filter((obj) => obj.id !== idCurso);
+        setCursos(newArray);
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -32,15 +37,16 @@ export default function CursosAlumno() {
                 >
                 </Box>
                 <Box id="box2" sx={{ mt: 3, flexGrow: 1 }}>
-                    <Grid container spacing={{xs: 2, md: 3}} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                         {
                             cursos.map((curso) => (
                                 <Grid key={curso.nombre} item xs={12} sm={4}>
-                                    <CardAlumnoCurso curso={curso} />
+                                    <CardSolicitudProfesor curso={curso}
+                                        onRechazarCurso={handleRefreshCursos}
+                                        onAceptarCurso={handleRefreshCursos} />
                                 </Grid>
                             ))
                         }
-
                     </Grid>
                 </Box>
             </Container>

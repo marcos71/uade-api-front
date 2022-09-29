@@ -33,10 +33,19 @@ const ResponsiveAppBar = () => {
         if (logedUser) {
             const parsedUser = JSON.parse(logedUser);
             if (parsedUser.role === 'alumno') {
-                setPages([{"name":"Home", "forward":"", "name":"Mis Cursos", "forward":"alumno"}]);
+                setPages([{
+                    "name": "Mis Cursos", "forward": "alumno/cursos"
+                }, {
+                    "name": "Solicitudes", "forward": "alumno/solicitudes"
+                }]);
                 setProfilePage('/perfilAlumno');
             } else if (parsedUser.role === 'profesor') {
-                setPages([{"name":"Home", "forward":"", "name":"Cursos", "forward":"profesor"}]);
+                setPages([{
+                    "name": "Cursos", "forward": "profesor"
+                },
+                {
+                    "name": "Solicitudes", "forward": "profesor/solicitudes"
+                }]);
                 setProfilePage('/perfilProfesor');
             }
         } else {
@@ -63,9 +72,9 @@ const ResponsiveAppBar = () => {
         setAnchorElUser(null);
         if (setting === 'Logout') {
             localStorage.removeItem('logedUser');
-            navigate('/login', {replace: true});
+            navigate('/login', { replace: true });
         } else if (setting === 'Profile') {
-            navigate(profilePage, {replace: true});
+            navigate(profilePage, { replace: true });
         }
     };
 
@@ -124,7 +133,7 @@ const ResponsiveAppBar = () => {
                             {pages.map((page) => (
                                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">
-                                        <Link style={{textDecoration:"none", color:"black"}} to={`/${page.forward}`}>{page.name}</Link>
+                                        <Link style={{ textDecoration: "none", color: "black" }} to={`/${page.forward}`}>{page.name}</Link>
                                     </Typography>
                                 </MenuItem>
                             ))}
@@ -156,7 +165,7 @@ const ResponsiveAppBar = () => {
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                <Link style={{textDecoration:"none", color:"white"}} to={`/${page.forward}`}>{page.name}</Link>
+                                <Link style={{ textDecoration: "none", color: "white" }} to={`/${page.forward}`}>{page.name}</Link>
                             </Button>
                         ))}
                     </Box>

@@ -1,21 +1,19 @@
-import { Box, Button, Container, createTheme, CssBaseline, Grid, ThemeProvider, Typography } from "@mui/material";
+import { Box, Container, createTheme, CssBaseline, Grid, ThemeProvider, Typography } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import CardAlumnoCurso from "../components/CardCursoAlumno";
 import dataCursos from "../data/cursos.json"
-import dataCursoxAumno from '../data/cursoxalumno.json';
 
 const theme = createTheme();
 
-export default function CursosAlumno() {
+export default function SolicitudesAlumno() {
     const logedUser = localStorage.getItem('logedUser');
     const parsedUser = JSON.parse(logedUser);
 
     //get only courses for logedUser
-    const cursosContratados = dataCursos.filter(obj => obj.alumno === parsedUser.username && 
-        (obj.estado === 'Aceptado' || obj.estado === 'Finalizado'));
+    const cursosPendientes = dataCursos.filter(obj => obj.alumno === parsedUser.username && 
+        obj.estado === 'Solicitada');
 
-    const [cursos, setCursos] = useState(cursosContratados);
+    const [cursos, setCursos] = useState(cursosPendientes);
 
     return (
         <ThemeProvider theme={theme}>

@@ -27,6 +27,7 @@ export default function ModalRechazo(props) {
         //console.log('COMENTARIO A RECHAZAR: ', idComentario);
         //console.log('MENSAJE A RECHAZAR: ', mensaje);
 
+        //parent component will fetch db and find it updated
         handleClose();
     }
 

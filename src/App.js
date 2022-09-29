@@ -23,6 +23,9 @@ import Prueba from './views/Prueba';
 import NuevoCurso from './views/NuevoCurso';
 import Curso from './views/Curso';
 import CardProfCurso from './components/CardCursoProfesor';
+import CursoAlumno from './views/CursoAlumno';
+import SolicitudesAlumno from './views/SolicitudesAlumno';
+import SolicitudesProfesor from './views/SolicitudesProfesor';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,14 +45,22 @@ function App() {
         <Route path='/login' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/' element={<RequireAuth />}>
-          <Route index element={<Home />} />
-          <Route path="/alumno" element={<CursosAlumno />}/>
-          <Route path="/profesor" element={<CursosProfesor />}/>
-          <Route path="/perfilAlumno" element={<PerfilEstudiante />}/>
-          <Route path="/perfilProfesor" element={<PerfilProfesor />}/>
-          <Route path="/nuevoCurso" element={<NuevoCurso />}/>
-          <Route path="/curso/:id" element={<Curso />}/>
-          <Route path='/prueba'>
+          <Route path='buscar' element={<Home />} />
+          <Route path="alumno">
+            <Route index element={<Home />} />
+            <Route path="cursos" element={<CursosAlumno />}/>
+            <Route path="solicitudes" element={<SolicitudesAlumno />}/>
+            <Route path="curso/:id" element={<CursoAlumno />}/>
+          </Route>
+          <Route path="profesor">
+            <Route index element={<CursosProfesor />}/>
+            <Route path="nuevoCurso" element={<NuevoCurso />}/>
+            <Route path="solicitudes" element={<SolicitudesProfesor />}/>
+            <Route path="curso/:id" element={<Curso />}/>
+          </Route>
+          <Route path="perfilAlumno" element={<PerfilEstudiante />}/>
+          <Route path="perfilProfesor" element={<PerfilProfesor />}/>
+          <Route path='prueba'>
             <Route index element={<Prueba />}/>
             <Route path=":id" element={<CardProfCurso />}/>  
           </Route>

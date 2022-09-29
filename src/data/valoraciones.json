@@ -1,23 +1,47 @@
 [
     {
         "id": "1",
-        "usuario": "marcos",
+        "usuario": "pepe",
         "comentario": "esto es un comentario que deberia tener varias lineas para ver como se ve en la lista de comentarios y mas adelante probar si funciona una especie de boton q sea tipo ver mas",
         "publicado":false,
-        "rechazado":false
+        "rechazado":false,
+        "valoracion":4.3,
+        "curso":2
     },
     {
         "id": "2",
-        "usuario": "pepe",
+        "usuario": "admin_alumno",
         "comentario": "que buena clase",
         "publicado":true,
-        "rechazado":false
+        "rechazado":false,
+        "valoracion":4.7,
+        "curso":2
     },
     {
         "id": "3",
-        "usuario": "mariana",
-        "comentario": "sos un boludo",
+        "usuario": "marcos",
+        "comentario": "probando usuarios",
         "publicado":false,
-        "rechazado":false
+        "rechazado":false,
+        "valoracion":2.4,
+        "curso":1
+    },
+    {
+        "id": "4",
+        "usuario": "usuario",
+        "comentario": "un comentario publicado",
+        "publicado":true,
+        "rechazado":false,
+        "valoracion":2.4,
+        "curso":1
+    },
+    {
+        "id": "5",
+        "usuario": "algun_user",
+        "comentario": "maso",
+        "publicado":true,
+        "rechazado":false,
+        "valoracion":3.2,
+        "curso":2
     }
 ]

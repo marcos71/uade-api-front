@@ -23,7 +23,7 @@ export default function NuevoCurso() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container component="main" sx={{ mb: 4 }}>
+      <Container component="main" sx={{ mb: 4, mt: 1 }}>
         <Typography variant="h6" gutterBottom>
           Nuevo Curso
         </Typography>

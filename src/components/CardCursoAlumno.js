@@ -5,16 +5,14 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { FormControlLabel, FormGroup, IconButton, Switch } from '@mui/material';
-import { useState } from 'react';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
+import { Rating } from '@mui/material';
 
-export default function CardProfCurso(props) {
+export default function CardAlumnoCurso(props) {
     const navigate = useNavigate();
 
     //deberia tener una ID de curso
-    const { nombre, materia, desc, id } = props.curso;
+    const { nombre, materia, desc, id, valoracion, profesor, estado } = props.curso;
 
     return (
         <Box sx={{ minWidth: 275 }}>
@@ -23,28 +21,21 @@ export default function CardProfCurso(props) {
                     <Typography variant="h5" component="div">
                         {nombre}
                     </Typography>
-
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    <Typography color="text.secondary">
                         {materia}
                     </Typography>
+                    <Typography color="text.secondary">
+                        {profesor}
+                    </Typography>
+                    <Rating size="small" precision={0.5} name="read-only" value={valoracion} readOnly />
                     <Typography variant="body2">
                         {desc}
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" variant='outlined' onClick={() => navigate(`/curso/${id}`)}>Ver Curso</Button>
-                    <FormGroup>
-                        <FormControlLabel
-                            checked={published}
-                            labelPlacement='start'
-                            control={<Switch />}
-                            onChange={handlePublish}
-                            label="Publicar" />
-                    </FormGroup>
-                    <IconButton aria-label="delete" onClick={handleDelete}>
-                        <DeleteIcon />
-                    </IconButton>
+                    <Button size="small" variant='outlined' onClick={() => navigate(`/alumno/curso/${id}`)}>Ver Curso</Button>
                 </CardActions>
+
             </Card>
         </Box>
     );

@@ -11,36 +11,19 @@ import { useEffect } from 'react';
 
 const theme = createTheme();
 
-export default function DescripcionCurso() {
-    const [nombre, setNombre] = useState('');
-    const [materia, setMateria] = useState('');
-    const [duracion, setDuracion] = useState('');
-    const [costo, setCosto] = useState('');
-    const [frecuencia, setFrecuencia] = useState('');
-    const [desc, setDesc] = useState('');
-    const [readOnly, setReadOnly] = useState(true);
+export default function DescripcionCurso(props) {
     const navigate = useNavigate();
-    const params = useParams();
-
-    //get id from url
-    const { id } = params;
-
-    //use id to load course from API
-    const curso = cursosJson.find(obj => obj.id === id);
-
-    useEffect(() => {
-        if (curso) {
-            setNombre(curso.nombre);
-            setMateria(curso.materia);
-            setDuracion(curso.duracion);
-            setCosto(curso.costo);
-            setFrecuencia(curso.frecuencia);
-            setDesc(curso.desc);
-        }
-    }, [nombre, materia, costo, duracion, frecuencia, desc]);
 
     //throw error if no course found
-
+    
+    const [nombre, setNombre] = useState(props.curso.nombre);
+    const [materia, setMateria] = useState(props.curso.materia);
+    const [duracion, setDuracion] = useState(props.curso.duracion);
+    const [costo, setCosto] = useState(props.curso.costo);
+    const [frecuencia, setFrecuencia] = useState(props.curso.frecuencia);
+    const [desc, setDesc] = useState(props.curso.desc);
+    const [readOnly, setReadOnly] = useState(true);
+    
     const handleSave = () => {
         navigate('/profesor');
     };
@@ -61,6 +44,7 @@ export default function DescripcionCurso() {
                             fullWidth
                             disabled={readOnly}
                             variant="standard"
+                            onChange={(e) => setNombre(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -71,6 +55,7 @@ export default function DescripcionCurso() {
                             fullWidth
                             disabled={readOnly}
                             variant="standard"
+                            onChange={(e) => setMateria(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={4}>
@@ -82,6 +67,7 @@ export default function DescripcionCurso() {
                             value={duracion}
                             disabled={readOnly}
                             variant="standard"
+                            onChange={(e) => setDuracion(e.target.value)}
                             InputProps={{
                                 startAdornment: <InputAdornment position="start">Hs</InputAdornment>,
                             }}
@@ -95,6 +81,7 @@ export default function DescripcionCurso() {
                             value={costo}
                             disabled={readOnly}
                             variant="standard"
+                            onChange={(e) => setCosto(e.target.value)}
                             InputProps={{
                                 startAdornment: <InputAdornment position="start">$</InputAdornment>,
                             }}
@@ -109,6 +96,7 @@ export default function DescripcionCurso() {
                             disabled={readOnly}
                             variant="standard"
                             type="number"
+                            onChange={(e) => setFrecuencia(e.target.value)}
                         />
                     </Grid>
                     <Grid item xs={12} >
@@ -120,6 +108,7 @@ export default function DescripcionCurso() {
                             multiline
                             disabled={readOnly}
                             maxRows={4}
+                            onChange={(e) => setDesc(e.target.value)}
                         />
                     </Grid>
 

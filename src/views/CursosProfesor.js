@@ -8,18 +8,19 @@ import cursosJson from "../data/cursos.json"
 const theme = createTheme();
 
 export default function CursosProfesor() {
-    const [cursos, setCursos] = useState([]);
-    const navigate = useNavigate();
+    const logedUser = localStorage.getItem('logedUser');
+    const parsedUser = JSON.parse(logedUser);
 
-    useEffect(() => {
-        // load from db for professor id
-        setCursos(cursosJson);
-    }, []);
+    // load from db for professor id
+    const cursosProfesor = cursosJson.filter(obj => obj.profesor === parsedUser.username);
+
+    const [cursos, setCursos] = useState(cursosProfesor);
+    const navigate = useNavigate();
 
     const handleClick = (e) => {
         //const nuevosCursos = [...cursos, {'nombre':'nuevo curso'}];
         //setCursos(nuevosCursos);
-        navigate('/nuevoCurso');
+        navigate('/profesor/nuevoCurso');
     };
 
     const handleDeleteCourse = (idCurso) => {

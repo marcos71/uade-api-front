@@ -1,37 +1,14 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import DescripcionCurso from '../components/DescripcionCurso';
 import ValoracionCurso from '../components/ValoracionCurso';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          {children}
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
+import { useParams } from 'react-router-dom';
+import cursosJson from "../data/cursos.json"
+import { useState } from 'react';
+import TabPanel from '../components/TabPanel';
 
 function a11yProps(index) {
   return {
@@ -41,7 +18,16 @@ function a11yProps(index) {
 }
 
 export default function BasicTabs() {
-  const [value, setValue] = React.useState(0);
+    const params = useParams();
+    
+    //get id from url
+    const { id } = params;
+    
+    //use id to load course from API
+    const cursoObj = cursosJson.find(obj => obj.id === id);
+
+    const [value, setValue] = useState(0);
+    const [curso, setCurso] = useState(cursoObj);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -56,10 +42,10 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <DescripcionCurso />
+        <DescripcionCurso curso={curso}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ValoracionCurso />
+        <ValoracionCurso curso={curso}/>
       </TabPanel>
     </Box>
   );

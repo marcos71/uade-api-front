@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
-import { Button } from "@mui/material";
+import { Box, Button, createTheme, CssBaseline, Grid, ThemeProvider, Typography } from "@mui/material";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import IconButton from '@mui/material/IconButton';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
@@ -15,6 +15,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import './PerfilEstudiante.css'
 import moment from "moment/moment";
+
+const theme = createTheme();
 
 function PerfilProfesor() {
     const [fecha, setFecha] = useState(moment);
@@ -65,62 +67,94 @@ function PerfilProfesor() {
 
 
     return (
-        <div className="create">
-            {rows?
-                <TableContainer >
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell align="right">Titulo</TableCell>
-                                <TableCell align="right">Fecha</TableCell>
-                                <TableCell align="right">Eliminar</TableCell>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Box
+                sx={{
+                    marginTop: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    marginLeft: 1,
+                    marginRight: 1,
+                    alignItems: 'inherit',
+                }}
+            >
+                {rows &&
+                    <Grid container>
+                        <TableContainer >
+                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell align="right">Titulo</TableCell>
+                                        <TableCell align="right">Fecha</TableCell>
+                                        <TableCell align="right">Eliminar</TableCell>
 
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {rows.map((row, index) => (
-                                <TableRow
-                                    key={index}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell align="right">{row.titulo}</TableCell>
-                                    <TableCell align="right">{row.fecha}</TableCell>
-                                    <TableCell align="right">
-                                        <IconButton aria-label="delete" onClick={() => onDeleteRow(index)}>
-                                            <RemoveCircleIcon />
-                                        </IconButton>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer> : <></>
-            }
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {rows.map((row, index) => (
+                                        <TableRow
+                                            key={index}
+                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                        >
+                                            <TableCell align="right">{row.titulo}</TableCell>
+                                            <TableCell align="right">{row.fecha}</TableCell>
+                                            <TableCell align="right">
+                                                <IconButton aria-label="delete" onClick={() => onDeleteRow(index)}>
+                                                    <RemoveCircleIcon />
+                                                </IconButton>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </Grid>
+                }
+                <Grid container spacing={3} sx={{ mt: 1, display: 'flex', alignItems: 'center' }}>
+                    <Grid item xs={12} sm={1}>
+                        <Typography>
+                            Titulo:
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={2}>
+                        <TextField onChange={handleChangeTitulo} helperText={errorMessage} error={isError}></TextField>
+                    </Grid>
+                    <Grid item xs={12} sm={1}>
+                        <Typography>
+                            Fecha:
+                        </Typography>
 
-            <form>
-                <div style={{ "display": "flex", "flexFlow": "row wrap", "alignItems": "center" }}>
-                    <label>
-                        Titulo:
-                    </label>
-                    <TextField onChange={handleChangeTitulo} helperText={errorMessage} error={isError}></TextField>
-                    <label>
-                        Fecha:
-                    </label>
-                    <LocalizationProvider dateAdapter={AdapterMoment}>
-                        <DesktopDatePicker
-                            inputFormat="DD/MM/YYYY"
-                            value={fecha}
-                            onChange={handleChange}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </LocalizationProvider>
-                    <IconButton aria-label="delete" onClick={handleAdd}>
-                        <AddCircleIcon />
-                    </IconButton>
-                </div>
-            </form>
-            <Button variant="contained" onClick={handleSave}>Guardar</Button>
-        </div>
+                    </Grid>
+                    <Grid item xs={12} sm={2}>
+                        <LocalizationProvider dateAdapter={AdapterMoment}>
+                            <DesktopDatePicker
+                                inputFormat="DD/MM/YYYY"
+                                value={fecha}
+                                onChange={handleChange}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+                    </Grid>
+                    <Grid item xs={12} sm={2}>
+
+                        <IconButton aria-label="delete" onClick={handleAdd}>
+                            <AddCircleIcon />
+                        </IconButton>
+                    </Grid>
+                </Grid>
+                <Box
+                    sx={{
+                        marginTop: 3,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Button variant="contained" onClick={handleSave}>Guardar</Button>
+                </Box>
+            </Box>
+        </ThemeProvider>
     );
 }
 

@@ -48,7 +48,7 @@ export default function CardCursoProfesor(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" variant='outlined' onClick={() => navigate(`/curso/${id}`)}>Ver Curso</Button>
+                    <Button size="small" variant='outlined' onClick={() => navigate(`/profesor/curso/${id}`)}>Ver Curso</Button>
                     <FormGroup>
                         <FormControlLabel
                             checked={published}

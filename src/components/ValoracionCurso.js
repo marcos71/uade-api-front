@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 import { createTheme, CssBaseline, Divider, Grid, IconButton, List, ListItem, ListItemText, ThemeProvider } from '@mui/material';
 import { useState } from 'react';
 import dataComentarios from '../data/valoraciones.json'
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
@@ -14,16 +13,20 @@ import ModalRechazo from './ModalRechazo';
 const theme = createTheme();
 
 export default function ValoracionCurso() {
-  const [comentarios, setComentarios] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
-  const [rejectCommentId, setRejectCommentId] = useState();
   const params = useParams();
-  //console.log(dataComentarios);
+  const logedUser = localStorage.getItem('logedUser');
+  const parsedUser = JSON.parse(logedUser);
 
   //read course id from url and get comments for it
   const { id } = params;
+  const filteredComment = dataComentarios.filter(obj => obj.curso == id);
+  const [comentarios, setComentarios] = useState(filteredComment);
+  
+  const [openModal, setOpenModal] = useState(false);
+  const [rejectCommentId, setRejectCommentId] = useState();
 
   const handlePublishComment = (comentario) => {
+    //call api to update comentario, then replace array memory obj with updated one
     const newArray = comentarios.slice();
     newArray.map(obj => {
       if (obj.id === comentario.id) {
@@ -38,10 +41,13 @@ export default function ValoracionCurso() {
     setOpenModal(true);
   };
 
+  /*
   useEffect(() => {
+    //fetch comments from db using course id
     console.log('UseEffect');
     setComentarios(dataComentarios);
   }, [comentarios, openModal]);
+  */
 
   return (
     <ThemeProvider theme={theme}>
@@ -53,7 +59,7 @@ export default function ValoracionCurso() {
       >
 
         <Typography component="legend">Valoracion del curso</Typography>
-        <Rating name="read-only" value={5} readOnly />
+        <Rating name="read-only" value={5} readOnly precision={0.5}/>
       </Box>
       <Box
         sx={{

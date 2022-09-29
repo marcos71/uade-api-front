@@ -2,21 +2,68 @@
     {
         "id": "1",
         "nombre": "Java 8",
-        "profesor": "marcos",
+        "profesor": "admin_prof",
         "costo": "200",
         "frecuencia": "2",
         "duracion": "4",
-        "desc": "sarasaseando",
-        "materia": "programacion 1"
+        "desc": "probando una descripcion q deberia ser bastante larga y en lo posible generar un salto de linea",
+        "materia": "programacion 1",
+        "valoracion":4.8,
+        "alumno":"admin_alumno",
+        "estado":"Aceptado"
     },
     {
         "id": "2",
         "nombre": "ReactJs",
-        "profesor": "tu vieja",
+        "profesor": "Profesor X",
         "costo": "350",
         "frecuencia": "3",
         "duracion": "4",
         "desc": "chamuyando como un campeon",
-        "materia": "programacion 1"
+        "materia": "programacion 1",
+        "valoracion":3.4,
+        "alumno":"admin_alumno",
+        "estado":"Finalizado"
+    },
+    {
+        "id": "3",
+        "nombre": "NodeJs",
+        "profesor": "Profesor X",
+        "costo": "400",
+        "frecuencia": "5",
+        "duracion": "4",
+        "desc": "Curso de NodeJs",
+        "materia": "programacion 1",
+        "valoracion":4.2,
+        "alumno":"admin_alumno",
+        "estado":"Solicitada"
+    }
+    ,
+    {
+        "id": "4",
+        "nombre": "SQL",
+        "profesor": "admin_prof",
+        "costo": "400",
+        "frecuencia": "5",
+        "duracion": "4",
+        "desc": "Curso de SQL",
+        "materia": "programacion 2",
+        "valoracion":4.2,
+        "alumno":"marcos",
+        "estado":"Aceptado"
+    },
+    {
+        "id": "5",
+        "nombre": "MongoDB",
+        "profesor": "admin_prof",
+        "costo": "400",
+        "frecuencia": "5",
+        "duracion": "4",
+        "desc": "Curso de MongoDB",
+        "materia": "programacion 2",
+        "valoracion":4.5,
+        "alumno":"marcos",
+        "estado":"Solicitada",
+        "mensaje":"Quiero solicitar el curso de MongoDB por una oportunidad laboral"
     }
 ]
