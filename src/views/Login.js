@@ -49,7 +49,11 @@ export default function SignIn() {
         //if valid send to home
         if (logedUser) {
             localStorage.setItem('logedUser', JSON.stringify(logedUser));
-            navigate('/', {replace: true});
+            if (logedUser.role === 'alumno') {
+                navigate('/home/alumno', {replace: true});
+            } else if (logedUser.role === 'profesor') {
+                navigate('/home/profesor', {replace: true});
+            }
         } else {
             //not valid user
         }
@@ -108,13 +112,13 @@ export default function SignIn() {
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
+                                <Link href="/olvidePassword" variant="body2">
+                                    Olvido su password?
                                 </Link>
                             </Grid>
                             <Grid item>
                                 <Link href="/signup" variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                    {"No tiene una cuenta? Registrese"}
                                 </Link>
                             </Grid>
                         </Grid>

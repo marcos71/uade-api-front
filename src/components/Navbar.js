@@ -24,7 +24,8 @@ const ResponsiveAppBar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [pages, setPages] = useState([]);
-    const [profilePage, setProfilePage] = useState([]);
+    const [profilePage, setProfilePage] = useState('');
+    const [homePage, setHomePage] = useState('');
     const navigate = useNavigate();
 
     const logedUser = localStorage.getItem('logedUser');
@@ -34,19 +35,21 @@ const ResponsiveAppBar = () => {
             const parsedUser = JSON.parse(logedUser);
             if (parsedUser.role === 'alumno') {
                 setPages([{
-                    "name": "Mis Cursos", "forward": "alumno/cursos"
+                    "name": "Mis Cursos", "forward": "home/alumno/cursos"
                 }, {
-                    "name": "Solicitudes", "forward": "alumno/solicitudes"
+                    "name": "Solicitudes", "forward": "home/alumno/solicitudes"
                 }]);
-                setProfilePage('/perfilAlumno');
+                setProfilePage('/home/perfilAlumno');
+                setHomePage('/home/alumno');
             } else if (parsedUser.role === 'profesor') {
                 setPages([{
-                    "name": "Cursos", "forward": "profesor"
+                    "name": "Cursos", "forward": "home/profesor"
                 },
                 {
-                    "name": "Solicitudes", "forward": "profesor/solicitudes"
+                    "name": "Solicitudes", "forward": "home/profesor/solicitudes"
                 }]);
-                setProfilePage('/perfilProfesor');
+                setProfilePage('/home/perfilProfesor');
+                setHomePage('/home/profesor');
             }
         } else {
             setPages([]);
@@ -87,7 +90,7 @@ const ResponsiveAppBar = () => {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="/"
+                        href={homePage}
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },

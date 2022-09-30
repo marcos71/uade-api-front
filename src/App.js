@@ -15,7 +15,7 @@ import ResponsiveAppBar from './components/Navbar';
 import SignIn from './views/Login';
 import { AuthProvider } from './contexts/UserAuth';
 import { RequireAuth } from './RequireAuth';
-import Home from './views/Home';
+import Home from './views/BuscarCursos';
 import SignUp from './views/SignUp';
 import CursosAlumno from './views/CursosAlumno';
 import CursosProfesor from './views/CursosProfesor';
@@ -26,6 +26,10 @@ import CardProfCurso from './components/CardCursoProfesor';
 import CursoAlumno from './views/CursoAlumno';
 import SolicitudesAlumno from './views/SolicitudesAlumno';
 import SolicitudesProfesor from './views/SolicitudesProfesor';
+import BuscarCursos from './views/BuscarCursos';
+import LandingPage from './views/LandingPage';
+import CursoAlumnoCompra from './views/CursoAlumnoCompra';
+import OlvidePassword from './views/OlvidePassword';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,13 +48,15 @@ function App() {
       <Routes>
         <Route path='/login' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/' element={<RequireAuth />}>
-          <Route path='buscar' element={<Home />} />
+        <Route path='/olvidePassword' element={<OlvidePassword />} />
+        <Route path='/' element={<LandingPage />}/>
+        <Route path='home' element={<RequireAuth />}>
           <Route path="alumno">
-            <Route index element={<Home />} />
+            <Route index element={<BuscarCursos />} />
             <Route path="cursos" element={<CursosAlumno />}/>
             <Route path="solicitudes" element={<SolicitudesAlumno />}/>
             <Route path="curso/:id" element={<CursoAlumno />}/>
+            <Route path="contratar/curso/:id" element={<CursoAlumnoCompra />}/>
           </Route>
           <Route path="profesor">
             <Route index element={<CursosProfesor />}/>

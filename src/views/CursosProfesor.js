@@ -20,7 +20,7 @@ export default function CursosProfesor() {
     const handleClick = (e) => {
         //const nuevosCursos = [...cursos, {'nombre':'nuevo curso'}];
         //setCursos(nuevosCursos);
-        navigate('/profesor/nuevoCurso');
+        navigate('/home/profesor/nuevoCurso');
     };
 
     const handleDeleteCourse = (idCurso) => {

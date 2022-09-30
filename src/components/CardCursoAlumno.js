@@ -5,14 +5,39 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 import { useNavigate } from 'react-router-dom';
-import { Rating } from '@mui/material';
+import { IconButton, Rating } from '@mui/material';
+import { useState } from 'react';
 
 export default function CardAlumnoCurso(props) {
     const navigate = useNavigate();
 
     //deberia tener una ID de curso
     const { nombre, materia, desc, id, valoracion, profesor, estado } = props.curso;
+    const { contratar, solicitud } = props;
+
+    const [finalizado, setFinaliado] = useState(estado === 'Finalizado' || estado === 'Cancelado');
+
+    const handleNavigate = () => {
+        if (contratar) {
+            navigate(`/home/alumno/contratar/curso/${id}`)
+        } else {
+            navigate(`/home/alumno/curso/${id}`)
+        }
+    };
+
+    const handleFinalizarCurso = () => {
+        // call api to change state to Finalizado
+        console.log('FINALIZADO');
+        setFinaliado(true);
+    };
+
+    const handleCanelarCurso = () => {
+        // call api to change state to Cancelado
+        console.log('CANCELADO');
+    };
 
     return (
         <Box sx={{ minWidth: 275 }}>
@@ -33,7 +58,18 @@ export default function CardAlumnoCurso(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" variant='outlined' onClick={() => navigate(`/alumno/curso/${id}`)}>Ver Curso</Button>
+                    <Button size="small" variant='outlined' onClick={handleNavigate}>Ver Curso</Button>
+
+                    {!contratar ? solicitud ?
+                        <IconButton onClick={handleCanelarCurso} >
+                            <CancelIcon />
+                        </IconButton> :
+                        !finalizado &&
+                        <IconButton onClick={handleFinalizarCurso} >
+                            <CheckCircleIcon />
+                        </IconButton>
+                        : <></>
+                    }
                 </CardActions>
 
             </Card>

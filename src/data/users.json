@@ -3,12 +3,21 @@
         "id":1,
         "username": "admin_alumno",
         "password": "1234",
-        "role": "alumno"
+        "role": "alumno",
+        "email":"alumno@prueba.com"
     },
     {
         "id":2,
         "username": "admin_prof",
         "password": "1234",
-        "role": "profesor"
+        "role": "profesor",
+        "email":"profesor@prueba.com"
+    },
+    {
+        "id":3,
+        "username": "marcos",
+        "password": "1234",
+        "role": "alumno",
+        "email":"marcos@prueba.com"
     }
 ]

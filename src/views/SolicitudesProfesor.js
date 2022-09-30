@@ -1,7 +1,5 @@
 import { Box, Container, createTheme, CssBaseline, Grid, ThemeProvider, Typography } from "@mui/material";
 import { useState } from "react";
-import CardAlumnoCurso from "../components/CardCursoAlumno";
-import CardCursoProfesor from "../components/CardCursoProfesor";
 import CardSolicitudProfesor from "../components/CardSolicitudProfesor";
 import dataCursos from "../data/cursos.json"
 

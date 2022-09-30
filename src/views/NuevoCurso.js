@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { Button, createTheme, CssBaseline, InputAdornment, ThemeProvider } from '@mui/material';
+import { Button, createTheme, CssBaseline, FormControl, InputAdornment, InputLabel, MenuItem, Select, ThemeProvider } from '@mui/material';
 import { Box, Container } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ export default function NuevoCurso() {
 
 
   const handleSave = () => {
-    navigate('/profesor');
+    navigate('/home/profesor');
   };
 
   return (
@@ -72,14 +72,14 @@ export default function NuevoCurso() {
             />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <TextField
-              required
-              label="Frecuencia"
-              fullWidth
-              autoComplete="shipping address-level2"
-              variant="standard"
-              type="number"
-            />
+            <FormControl sx={{ m: 1, minWidth: 200 }}>
+              <InputLabel id="demo-simple-select-standard-label">Frecuencia</InputLabel>
+              <Select label="Frecuencia">
+                <MenuItem value={"Unica"}>Unica</MenuItem>
+                <MenuItem value={"Semanal"}>Semanal</MenuItem>
+                <MenuItem value={"Mensual"}>Mensual</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={12} >
             <TextField
@@ -90,7 +90,7 @@ export default function NuevoCurso() {
               maxRows={4}
             />
           </Grid>
-          
+
           <Grid item>
             <Button variant='contained' onClick={handleSave}>
               Guardar

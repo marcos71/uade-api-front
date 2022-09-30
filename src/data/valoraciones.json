@@ -43,5 +43,15 @@
         "rechazado":false,
         "valoracion":3.2,
         "curso":2
+    },
+    {
+        "id": "6",
+        "usuario": "marcos",
+        "comentario": "no me gusto",
+        "publicado":false,
+        "rechazado":true,
+        "valoracion":1.0,
+        "curso":4,
+        "msjRechazo":"un mensaje de rechazo"
     }
 ]

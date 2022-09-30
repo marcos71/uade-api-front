@@ -34,7 +34,7 @@ export default function SolicitudesAlumno() {
                         {
                             cursos.map((curso) => (
                                 <Grid key={curso.nombre} item xs={12} sm={4}>
-                                    <CardAlumnoCurso curso={curso} />
+                                    <CardAlumnoCurso curso={curso} solicitud={true}/>
                                 </Grid>
                             ))
                         }

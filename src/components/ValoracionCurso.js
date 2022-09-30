@@ -9,15 +9,14 @@ import { useParams } from 'react-router-dom';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import ModalRechazo from './ModalRechazo';
+import { useEffect } from 'react';
 
 const theme = createTheme();
 
 export default function ValoracionCurso() {
   const params = useParams();
-  const logedUser = localStorage.getItem('logedUser');
-  const parsedUser = JSON.parse(logedUser);
 
-  //read course id from url and get comments for it
+  //read course id from url and get comments for it from api
   const { id } = params;
   const filteredComment = dataComentarios.filter(obj => obj.curso == id);
   const [comentarios, setComentarios] = useState(filteredComment);
@@ -45,8 +44,8 @@ export default function ValoracionCurso() {
   useEffect(() => {
     //fetch comments from db using course id
     console.log('UseEffect');
-    setComentarios(dataComentarios);
-  }, [comentarios, openModal]);
+    setComentarios(comentarios);
+  }, []);
   */
 
   return (
