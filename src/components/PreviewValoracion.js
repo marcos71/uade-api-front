@@ -2,14 +2,13 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
-import { createTheme, CssBaseline, Divider, Grid, IconButton, List, ListItem, ListItemText, ThemeProvider } from '@mui/material';
+import { createTheme, CssBaseline, Divider, Grid, List, ListItem, ListItemText, ThemeProvider } from '@mui/material';
 import { useState } from 'react';
 import dataComentarios from '../data/valoraciones.json';
 
 const theme = createTheme();
 
 export default function PreviewValoracion(props) {
-    //read course id from url and get comments for it
     const { id, valoracion } = props.curso;
     const valoracionesCurso = dataComentarios.filter(obj => obj.curso == id && obj.publicado);
     const [comentarios, setComentarios] = useState(valoracionesCurso);

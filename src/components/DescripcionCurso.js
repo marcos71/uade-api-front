@@ -2,20 +2,15 @@ import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { Button, createTheme, CssBaseline, FormControl, InputAdornment, InputLabel, MenuItem, Select, ThemeProvider } from '@mui/material';
-import { Container } from '@mui/system';
-import { useNavigate, useParams } from 'react-router-dom';
-import cursosJson from "../data/cursos.json"
+import { Button, createTheme, CssBaseline, InputAdornment, ThemeProvider } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import SelectFrecuencia from './SelectFrecuencia';
 
 const theme = createTheme();
 
 export default function DescripcionCurso(props) {
     const navigate = useNavigate();
-
-    //throw error if no course found
 
     const [nombre, setNombre] = useState(props.curso.nombre);
     const [materia, setMateria] = useState(props.curso.materia);
@@ -25,7 +20,7 @@ export default function DescripcionCurso(props) {
     const [desc, setDesc] = useState(props.curso.desc);
     const [readOnly, setReadOnly] = useState(true);
     const handleSave = () => {
-        navigate('/profesor');
+        navigate('/home/profesor');
     };
 
     return (
@@ -115,8 +110,6 @@ export default function DescripcionCurso(props) {
                     }
                 </Grid>
             </Grid>
-
         </ThemeProvider>
-
     );
 }

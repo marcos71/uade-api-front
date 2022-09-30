@@ -1,10 +1,7 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import { useEffect } from 'react';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -23,11 +20,9 @@ export default function ModalRechazo(props) {
     }
 
     const handleRechazo = () => {
-        // update comment with rejection message
-        //console.log('COMENTARIO A RECHAZAR: ', idComentario);
-        //console.log('MENSAJE A RECHAZAR: ', mensaje);
+        // LLamar a la API para actualizar el comentario y setearlo como rechazado y cargar el mensaje de rechazo
 
-        //parent component will fetch db and find it updated
+        // Agregar callback para refrescar pagina padre
         handleClose();
     }
 
@@ -38,9 +33,7 @@ export default function ModalRechazo(props) {
                 <TextField
                     autoFocus
                     margin="dense"
-                    id="name"
                     label="Motivo de rechazo"
-                    type="email"
                     fullWidth
                     multiline
                     value={mensaje}

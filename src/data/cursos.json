@@ -10,7 +10,8 @@
         "materia": "programacion 1",
         "valoracion":4.8,
         "alumno":"admin_alumno",
-        "estado":"Aceptado"
+        "estado":"Aceptado",
+        "publicado":true
     },
     {
         "id": "2",
@@ -23,7 +24,8 @@
         "materia": "programacion 1",
         "valoracion":3.4,
         "alumno":"admin_alumno",
-        "estado":"Finalizado"
+        "estado":"Finalizado",
+        "publicado":false
     },
     {
         "id": "3",
@@ -36,7 +38,8 @@
         "materia": "programacion 1",
         "valoracion":4.2,
         "alumno":"admin_alumno",
-        "estado":"Solicitada"
+        "estado":"Solicitada",
+        "publicado":true
     }
     ,
     {
@@ -50,7 +53,8 @@
         "materia": "programacion 2",
         "valoracion":4.2,
         "alumno":"marcos",
-        "estado":"Aceptado"
+        "estado":"Aceptado",
+        "publicado":true
     },
     {
         "id": "5",
@@ -64,6 +68,21 @@
         "valoracion":4.5,
         "alumno":"marcos",
         "estado":"Solicitada",
-        "mensaje":"Quiero solicitar el curso de MongoDB por una oportunidad laboral"
+        "mensaje":"Quiero solicitar el curso de MongoDB por una oportunidad laboral",
+        "publicado":true
+    },
+    {
+        "id": "6",
+        "nombre": "Typescript",
+        "profesor": "admin_prof",
+        "costo": "350",
+        "frecuencia": "Unica",
+        "duracion": "3",
+        "desc": "probando un curso no publicado",
+        "materia": "programacion 1",
+        "valoracion":3.4,
+        "alumno":"admin_alumno",
+        "estado":"Finalizado",
+        "publicado":false
     }
 ]

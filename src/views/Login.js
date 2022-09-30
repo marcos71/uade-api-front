@@ -12,8 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import users from "../data/users.json";
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/UserAuth';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
 
@@ -24,17 +23,9 @@ export default function SignIn() {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const navigate = useNavigate();
-    const location = useLocation();
-    const redirectPath = location.state?.path || '/';
-    const auth = useAuth();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        //auth.login('marcos');
-        
-        //navigate('/', {replace: true});
-
     
         const missingEmail = email === '';
         const missingPass = pass === '';
@@ -44,9 +35,9 @@ export default function SignIn() {
             return;
         }
 
-        //validate credentials
+        // Validar credenciales contra la API
         const logedUser = users.find(user => user.username === email && user.password === pass);
-        //if valid send to home
+        // Si es un usuario valido enviarlo a su correspondiente pagina de home
         if (logedUser) {
             localStorage.setItem('logedUser', JSON.stringify(logedUser));
             if (logedUser.role === 'alumno') {
@@ -55,7 +46,7 @@ export default function SignIn() {
                 navigate('/home/profesor', {replace: true});
             }
         } else {
-            //not valid user
+            // Usuario invalido, mostrar un mensaje
         }
     };
 

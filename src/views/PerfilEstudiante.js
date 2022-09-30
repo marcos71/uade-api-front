@@ -16,7 +16,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import './PerfilEstudiante.css'
 import moment from "moment/moment";
 import { Box } from "@mui/system";
 
@@ -24,20 +23,14 @@ const theme = createTheme();
 
 function PerfilEstudiante() {
     const [dateValue, setDateValue] = useState(moment);
-    const [visible, setVisible] = useState(false);
-    const [mock, setMock] = useState({});
     const [rows, setRows] = useState([]);
-    const [i, setI] = useState(1);
     const [nivel, setNivel] = useState("Primario");
     const [titulo, setTitulo] = useState();
     const [estado, setEstado] = useState("curso");
     const [errorMessage, setErrorMessage] = useState();
     const [isError, setIsError] = useState(false);
 
-
     // leer el usuario del localStorage y si el rol no es alumno, mandar a login
-
-
 
     const createData = (nivel, titulo, estado) => {
         return { nivel, titulo, estado };
@@ -48,32 +41,18 @@ function PerfilEstudiante() {
     };
 
     const handleChangeNivel = (newValue) => {
-        console.log(newValue.target.value);
         setNivel(newValue.target.value);
     };
 
     const handleChangeTitulo = (newValue) => {
-        console.log(newValue.target.value);
         setTitulo(newValue.target.value);
     };
 
     const handleChangeEstado = (newValue) => {
-        console.log(newValue.target.value);
         setEstado(newValue.target.value);
     };
 
     const handleAdd = () => {
-
-        //const list = mock;
-        //console.log(mock);
-        //let firstField = mock.test[mock.test.length - 1];
-        //console.log(firstField === undefined);
-        /*
-        if (!mock.test) {
-            mock.test = [];
-        }
-        */
-
         if (!titulo || titulo.length === 0) {
             setErrorMessage("Obligatorio");
             setIsError(true);
@@ -83,31 +62,18 @@ function PerfilEstudiante() {
         setErrorMessage();
         setIsError(false);
 
-        //const newRow =  createData(nivel, titulo, estado, "asd");
-        //rows.push(createData(nivel, titulo, estado, "asd"));
         const newRows = rows.concat(createData(nivel, titulo, estado));
         setRows(newRows);
-        //rows = [createData(nivel, titulo, estado, "asd")]
-        //console.log(rows);
-        //mock.test.push(i);
-        //setI(i + 1);
-        //console.log(mock);
-        //setMock(mock);
-        //setVisible(!visible);
     };
 
     const onDeleteRow = (row) => {
-
         const newArray = rows.filter((obj, index) => index !== row);
-        console.log(newArray);
         setRows(newArray);
     };
 
     const handleSave = () => {
-        console.log(dateValue);
-        console.log(rows);
+        // Llamar a la API para actualizar los datos del usuario
     };
-
 
     return (
         <ThemeProvider theme={theme}>
@@ -161,7 +127,6 @@ function PerfilEstudiante() {
 
                 <Grid container spacing={3} sx={{ mt: 1, display: 'flex', alignItems: 'center' }}>
                     <Grid item xs={12} sm={2}>
-
                         <Typography>
                             Fecha de nacimiento
                         </Typography>

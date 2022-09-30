@@ -5,9 +5,8 @@ import Box from '@mui/material/Box';
 import DetalleCursoAlumno from '../components/DetalleCursoAlumno';
 import ValoracionCursoAlumno from '../components/ValoracionCursoAlumno';
 import cursosJson from "../data/cursos.json"
-import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import TabPanel from '../components/TabPanel';
+import { useParams } from 'react-router-dom';
 
 function a11yProps(index) {
     return {
@@ -17,19 +16,18 @@ function a11yProps(index) {
 }
 
 export default function CursoAlumno() {
-    const navigate = useNavigate();
     const logedUser = localStorage.getItem('logedUser');
     const parsedUser = JSON.parse(logedUser);
 
     const params = useParams();
 
-    //get id from url
+    // Obtener id de curso de la URL
     const { id } = params;
     
-    //use id to load course from API
+    // Llamar a la API para obtener el curso por id
     const cursoObj = cursosJson.find(obj => obj.id === id && obj.alumno === parsedUser.username);
 
-    //throw error if no course found
+    // Lanzar error si no existe el curso
     //navigate('/alumno/cursos');
     
     const [value, setValue] = React.useState(0);

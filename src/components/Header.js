@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Box, Stack } from '@mui/system';
-import { Grid } from '@mui/material';
+import { Stack } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 
 function Header(props) {

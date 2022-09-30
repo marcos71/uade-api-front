@@ -1,4 +1,4 @@
-import { Box, Container, createTheme, CssBaseline, Grid, ThemeProvider, Typography } from "@mui/material";
+import { Box, Container, createTheme, CssBaseline, Grid, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import CardSolicitudProfesor from "../components/CardSolicitudProfesor";
 import dataCursos from "../data/cursos.json"
@@ -9,7 +9,7 @@ export default function SolicitudesProfesor() {
     const logedUser = localStorage.getItem('logedUser');
     const parsedUser = JSON.parse(logedUser);
 
-    //get only courses for logedUser and not deleted
+    // Llamar a la API y obtener solo los cursos solicitados del profesor y que no esten eliminados o no publicados
     const cursosPendientes = dataCursos.filter(obj => obj.profesor === parsedUser.username &&
         obj.estado === 'Solicitada');
 

@@ -1,4 +1,4 @@
-import { Box, Container, createTheme, CssBaseline, Grid, ThemeProvider, Typography } from "@mui/material";
+import { Box, Container, createTheme, CssBaseline, Grid, ThemeProvider } from "@mui/material";
 import { useState } from "react";
 import CardAlumnoCurso from "../components/CardCursoAlumno";
 import dataCursos from "../data/cursos.json"
@@ -9,7 +9,7 @@ export default function SolicitudesAlumno() {
     const logedUser = localStorage.getItem('logedUser');
     const parsedUser = JSON.parse(logedUser);
 
-    //get only courses for logedUser
+    // Llamar a la API y obtener solo los cursos solicitados del alumno logeado
     const cursosPendientes = dataCursos.filter(obj => obj.alumno === parsedUser.username && 
         obj.estado === 'Solicitada');
 
@@ -38,7 +38,6 @@ export default function SolicitudesAlumno() {
                                 </Grid>
                             ))
                         }
-
                     </Grid>
                 </Box>
             </Container>

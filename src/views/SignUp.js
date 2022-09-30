@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -13,10 +12,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FormLabel, Radio, RadioGroup } from '@mui/material';
-import { Label } from '@mui/icons-material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import users from "../data/users.json";
 
 const theme = createTheme();
 
@@ -36,7 +33,7 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    //validate missing fields
+    // Validar campos faltantes
     const missingFirstName = !firstName || firstName === '';
     const missingLastName = !lastName || lastName === '';
     const missingEmail = !email || email === '';
@@ -51,7 +48,7 @@ export default function SignUp() {
       return;
     }
 
-    //create new user
+    // Crear nuevo usuario
     const newUser = {
       firstName,
       lastName,
@@ -60,9 +57,9 @@ export default function SignUp() {
       role
     };
 
-    //store new user
+    // Guardar nuevo usuario
 
-    //redirect to login
+    // Redirigir al login
     navigate('/login', {replace: true});
   };
 
@@ -88,12 +85,9 @@ export default function SignUp() {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  label="Nombre"
                   autoFocus
                   error={firstNameError}
                   onChange={e => setFirstName(e.target.value)}
@@ -103,10 +97,7 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  label="Apellido"
                   error={lastNameError}
                   onChange={e => setLastName(e.target.value)}
                 />
@@ -115,10 +106,7 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  label="Email"
                   error={emailError}
                   onChange={e => setEmail(e.target.value)}
                 />
@@ -127,11 +115,8 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
                   label="Password"
                   type="password"
-                  id="password"
-                  autoComplete="new-password"
                   error={passError}
                   onChange={e => setPass(e.target.value)}
                 />
@@ -161,7 +146,7 @@ export default function SignUp() {
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">
-                  Already have an account? Sign in
+                  Tenes una cuenta? Ingresa
                 </Link>
               </Grid>
             </Grid>

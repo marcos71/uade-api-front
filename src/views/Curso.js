@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import DescripcionCurso from '../components/DescripcionCurso';
 import ValoracionCurso from '../components/ValoracionCurso';
@@ -20,10 +19,10 @@ function a11yProps(index) {
 export default function BasicTabs() {
     const params = useParams();
     
-    //get id from url
+    // Obtener id de curso de la URL
     const { id } = params;
     
-    //use id to load course from API
+    // Llamar a la API para obtener el curso por id
     const cursoObj = cursosJson.find(obj => obj.id === id);
 
     const [value, setValue] = useState(0);

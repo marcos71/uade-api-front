@@ -12,7 +12,7 @@ export default function DetalleCursoAlumno(props) {
     const [contratar, setContratar] = useState(props.contratar);
     const { nombre, materia, duracion, costo, frecuencia, desc, profesor } = props.curso;
 
-    //search if there is no existing request for the user and this course and ignore the buy button
+    // Validar si no existe una solicitud pendiente para este curso y alumno, entonces ignorar el boton de contratar
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -23,11 +23,9 @@ export default function DetalleCursoAlumno(props) {
     };
 
     const handleEnviar = () => {
-        // create request in db
+        // LLamar API para generar una solicitud de compra para el alumno y curso
         setOpen(false);
     };
-
-    //throw error if no course found
 
     return (
         <ThemeProvider theme={theme}>

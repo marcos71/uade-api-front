@@ -15,10 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
-//const pages = [{"name":"Home", "forward":"alumno"}, {"name":"Profesor", "forward":"profesor"}];
-const settings = ['Profile', 'Logout'];
-
-
+const settings = ['Perfil', 'Logout'];
 
 const ResponsiveAppBar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -76,7 +73,7 @@ const ResponsiveAppBar = () => {
         if (setting === 'Logout') {
             localStorage.removeItem('logedUser');
             navigate('/login', { replace: true });
-        } else if (setting === 'Profile') {
+        } else if (setting === 'Perfil') {
             navigate(profilePage, { replace: true });
         }
     };

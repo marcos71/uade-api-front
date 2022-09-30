@@ -9,7 +9,6 @@ import { useParams } from 'react-router-dom';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import ModalRechazo from './ModalRechazo';
-import { useEffect } from 'react';
 
 const theme = createTheme();
 
@@ -25,7 +24,7 @@ export default function ValoracionCurso() {
   const [rejectCommentId, setRejectCommentId] = useState();
 
   const handlePublishComment = (comentario) => {
-    //call api to update comentario, then replace array memory obj with updated one
+    // Llamar a la API para actualizar el comentario como publicado true, y modificar el array en memoria para que renderice de nuevo
     const newArray = comentarios.slice();
     newArray.map(obj => {
       if (obj.id === comentario.id) {
@@ -39,14 +38,6 @@ export default function ValoracionCurso() {
     setRejectCommentId(comentario.id)
     setOpenModal(true);
   };
-
-  /*
-  useEffect(() => {
-    //fetch comments from db using course id
-    console.log('UseEffect');
-    setComentarios(comentarios);
-  }, []);
-  */
 
   return (
     <ThemeProvider theme={theme}>

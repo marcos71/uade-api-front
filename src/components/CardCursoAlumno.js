@@ -13,8 +13,6 @@ import { useState } from 'react';
 
 export default function CardAlumnoCurso(props) {
     const navigate = useNavigate();
-
-    //deberia tener una ID de curso
     const { nombre, materia, desc, id, valoracion, profesor, estado } = props.curso;
     const { contratar, solicitud } = props;
 
@@ -29,13 +27,13 @@ export default function CardAlumnoCurso(props) {
     };
 
     const handleFinalizarCurso = () => {
-        // call api to change state to Finalizado
+        // Llamar a la API para cambiar el estado del curso a "Finalizado"
         console.log('FINALIZADO');
         setFinaliado(true);
     };
 
     const handleCanelarCurso = () => {
-        // call api to change state to Cancelado
+        // Llamar a la API para cambiar el estado del curso a "Cancelado"
         console.log('CANCELADO');
     };
 
@@ -71,7 +69,6 @@ export default function CardAlumnoCurso(props) {
                         : <></>
                     }
                 </CardActions>
-
             </Card>
         </Box>
     );

@@ -2,21 +2,19 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
-import { Button, createTheme, CssBaseline, Divider, Grid, IconButton, List, ListItem, ListItemText, TextField, ThemeProvider } from '@mui/material';
+import { Button, createTheme, CssBaseline, Divider, Grid, List, ListItem, ListItemText, TextField, ThemeProvider } from '@mui/material';
 import { useState } from 'react';
 import dataComentarios from '../data/valoraciones.json'
-import dataCursoxAlumno from '../data/cursoxalumno.json'
 import { useEffect } from 'react';
 
 const theme = createTheme();
 
 export default function ValoracionCursoAlumno(props) {
-  //get user
   const logedUser = localStorage.getItem('logedUser');
   const parsedUser = JSON.parse(logedUser);
 
-  //read course id from url and get comments for it
   const { id, valoracion, estado } = props.curso;
+  // Llamar a la API para obtener los comentarios publicados del curso
   const valoracionesCurso = dataComentarios.filter(obj => obj.curso == id && obj.publicado);
   const [comentarios, setComentarios] = useState(valoracionesCurso);
 
@@ -24,6 +22,8 @@ export default function ValoracionCursoAlumno(props) {
   const [comentario, setComentario] = useState();
   const [msjRechazo, setMsjRechazo] = useState();
   const [comentarioEnviado, setComentarioEnviado] = useState(false);
+
+  // Validar si no existe una solicitud pendiente para este curso y alumno, entonces ignorar el boton de contratar
 
   const { contratar } = props;
 
@@ -43,14 +43,13 @@ export default function ValoracionCursoAlumno(props) {
   }, [comentarios]);
 
   const handleCalificar = () => {
-    //save rating in db
+    // Llamar a la API para guardar el rating en el curso
   };
 
   const handleEnviarComentario = () => {
-    //save comment in db
-    //console.log(comentario);
+    // Llamar a la API para guardar el mensaje del comentario
 
-    //if comment was saved ok
+    // Si fue guardado correctamente
     setComentarioEnviado(true);
   };
 

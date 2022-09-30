@@ -8,28 +8,27 @@ import Typography from '@mui/material/Typography';
 import { FormControlLabel, FormGroup, IconButton, Switch } from '@mui/material';
 import { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function CardCursoProfesor(props) {
     const navigate = useNavigate();
 
     //deberia tener una ID de curso
-    const { nombre, materia, desc, id } = props.curso;
+    const { nombre, materia, desc, id, publicado } = props.curso;
 
-    //read state from curso obj
-    const [published, setPublished] = useState(false);
+    // Leer el estado publicado del objeto curso
+    const [published, setPublished] = useState(publicado);
 
     const handlePublish = (e) => {
-        //call api to change state of course to published/unpublished
+        // LLamar a la API para cambiar el estado publicado del curso a true/false
         setPublished(e.target.checked);
     };
 
     const handleDelete = () => {
-        //call api to delete course
+        // LLamar API para eliminar el curso
         props.onCourseDeleted(id);
 
-        console.log('DELETE ', nombre);
+        console.log('DELETE: ', nombre);
     };
 
     return (

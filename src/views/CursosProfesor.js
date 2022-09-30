@@ -1,5 +1,4 @@
 import { Box, Button, Container, createTheme, CssBaseline, Grid, ThemeProvider, Typography } from "@mui/material";
-import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CardProfCurso from "../components/CardCursoProfesor";
@@ -11,19 +10,17 @@ export default function CursosProfesor() {
     const logedUser = localStorage.getItem('logedUser');
     const parsedUser = JSON.parse(logedUser);
 
-    // load from db for professor id
+    // Llamar a la API y obtener los cursos del profesor logeado
     const cursosProfesor = cursosJson.filter(obj => obj.profesor === parsedUser.username);
 
     const [cursos, setCursos] = useState(cursosProfesor);
     const navigate = useNavigate();
 
-    const handleClick = (e) => {
-        //const nuevosCursos = [...cursos, {'nombre':'nuevo curso'}];
-        //setCursos(nuevosCursos);
+    const handleCrearCurso = (e) => {
         navigate('/home/profesor/nuevoCurso');
     };
 
-    const handleDeleteCourse = (idCurso) => {
+    const handleEliminarCurso = (idCurso) => {
         const newArray = cursos.filter((obj) => obj.id !== idCurso);
         setCursos(newArray);
     };
@@ -41,7 +38,7 @@ export default function CursosProfesor() {
                         alignItems: 'flex-end',
                     }}
                 >
-                    <Button variant="contained" onClick={e => {handleClick(e)}}>
+                    <Button variant="contained" onClick={e => {handleCrearCurso(e)}}>
                         Crear
                     </Button>
                 </Box>
@@ -50,7 +47,7 @@ export default function CursosProfesor() {
                         {
                             cursos.map((curso) => (
                                 <Grid key={curso.nombre} item xs={12} sm={4}>
-                                    <CardProfCurso curso={curso} onCourseDeleted={handleDeleteCourse}/>
+                                    <CardProfCurso curso={curso} onCourseDeleted={handleEliminarCurso}/>
                                 </Grid>
                             ))
                         }

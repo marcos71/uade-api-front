@@ -13,7 +13,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import './PerfilEstudiante.css'
 import moment from "moment/moment";
 
 const theme = createTheme();
@@ -36,7 +35,6 @@ function PerfilProfesor() {
     };
 
     const handleChangeTitulo = (newValue) => {
-        console.log(newValue.target.value);
         setTitulo(newValue.target.value);
     };
 
@@ -56,13 +54,11 @@ function PerfilProfesor() {
 
     const onDeleteRow = (row) => {
         const newArray = rows.filter((obj, index) => index !== row);
-        console.log(newArray);
         setRows(newArray);
     };
 
     const handleSave = () => {
-        console.log(fecha);
-        console.log(rows);
+        // Llamar a la API para actualizar los datos del usuario
     };
 
 

@@ -1,15 +1,12 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import ResponsiveAppBar from './components/Navbar';
-import { useAuth } from './contexts/UserAuth';
 
-export const RequireAuth = ({ children }) => {
+export const RequireAuth = () => {
   const location = useLocation();
-  const auth = useAuth();
   const logedUser = localStorage.getItem('logedUser');
   if (!logedUser) {
     return <Navigate to='/login' state={{ path: location.pathname }} />
   } else {
-
     return (
         <div>
             <ResponsiveAppBar />
@@ -17,5 +14,4 @@ export const RequireAuth = ({ children }) => {
         </div>
     );
   }
-  //return children
 };

@@ -5,7 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Dialog, DialogContent, DialogContentText, DialogTitle, FormControlLabel, FormGroup, IconButton, Switch } from '@mui/material';
+import { Dialog, DialogContent, DialogContentText, DialogTitle, IconButton } from '@mui/material';
 import { useState } from 'react';
 import EmailIcon from '@mui/icons-material/Email';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
@@ -24,13 +24,13 @@ export default function CardSolicitudProfesor(props) {
     };
 
     const handleAceptar = () => {
-        //call api to accept course
+        // LLamar API para aceptar el curso solicitado
         props.onAceptarCurso(id);
         console.log('ACEPTAR');
     };
 
     const handleRechazar = () => {
-        //call api to reject course
+        // LLamar API para rechazar el curso solicitado
         props.onRechazarCurso(id);
         console.log('RECHAZAR');
     };
